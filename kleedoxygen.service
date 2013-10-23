@@ -1,0 +1,18 @@
+[Unit]
+Requires=network.target
+After=network.target
+Description=KLEE doxygen web service
+
+[Service]
+ExecStart=/path/to/klee-doxygen-webservice/venv/bin/python /path/to/klee-doxygen-webservice/production_server.py
+WorkingDirectory=/home/kleedoxygen/klee-doxygen-webservice
+Type=simple
+Restart=on-success
+RestartSec=10
+User=kleedoxygen
+Nice=19
+StandardOutput=journal
+StandardError=inherit
+
+[Install]
+WantedBy=multi-user.target
