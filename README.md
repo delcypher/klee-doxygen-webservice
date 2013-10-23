@@ -17,14 +17,19 @@ appropriately.
 Debugging
 =========
 
-Use the development server (use --public if it needs to be tested with the outside world)
+You can run gen_doxygen.py independently from the server to test the generation of doxygen
+documents.
+
+To use the development server (use --public if it needs to be tested with the outside world)
 
 $ python webservice.py --debug
+
+See --help for options.
 
 
 Production
 ==========
 
-Use the production server (uses Tornado HTTP server).
+Use the production server (uses Tornado HTTP server). See --help for options
 
 $ python production_server.py
