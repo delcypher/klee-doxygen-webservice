@@ -111,11 +111,9 @@ def run():
     # Use rsync to do the copy
     logging.debug('Copying docs')
     if runCmd(['rsync', 
-               '--progress',
+               '--verbose',
                '--recursive',
                '--safe-links',
-               '--perms',
-               '--times',
                '--inplace',
                os.path.join(buildDir, 'docs','doxygen','html/'), # source (trailing slash is important)
                doxygenDest # Destination
