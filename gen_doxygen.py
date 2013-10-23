@@ -36,7 +36,12 @@ def runCmd(cmdline, workingDir=None):
         return 1
 
     logging.info('Running ' + str(cmdline))
-    return subprocess.call(cmdline, cwd=workingDir)
+    if logging.getLogger().level <= logging.DEBUG:
+        return subprocess.call(cmdline, cwd=workingDir)
+    else:
+        # Disregard tool's stdout/stderr
+        with open(os.devnull, 'w') as nullFile:
+            return subprocess.call(cmdline, cwd=workingDir, stdout=nullFile, stderr=nullFile)
 
 def isGitRepo(path):
     if not os.path.exists( os.path.join(path, '.git') ):
