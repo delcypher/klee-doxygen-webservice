@@ -109,9 +109,10 @@ def run():
         os.mkdir(doxygenDest)
 
     # Use rsync to do the copy
+    logLevel=logging.getLogger().level
     logging.debug('Copying docs')
     if runCmd(['rsync', 
-               '--verbose',
+               '--verbose' if logLevel <= logging.DEBUG else '', # Only be verbose if we are debugging
                '--recursive',
                '--safe-links',
                '--inplace',
