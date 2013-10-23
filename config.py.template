@@ -1,0 +1,14 @@
+import os
+repoDest=os.path.abspath( os.path.join(os.path.dirname(__file__),'klee-src') )
+repoURL='git://github.com/ccadar/klee'
+buildDir=os.path.abspath( os.path.join(os.path.dirname(__file__),'klee-bin') )
+
+# Configure flags
+configureFlags=[
+                '--with-llvmsrc=/path/to/llvm/src',
+                '--with-llvmobj=/path/to/llvm/bin',
+                '--with-stp=/path/to/stp/bin'
+               ]
+
+# Destination for doxygen html
+doxygenDest='/path/to/html/dir'
