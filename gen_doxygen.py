@@ -13,7 +13,7 @@ def enum(*sequential):
     #Build a dictionary that maps sequential[i] => i
     enums = dict( zip(sequential, range(len(sequential))) )
     #Build a reverse dictionary
-    reverse = dict((value, key) for key, value in enums.iteritems())
+    reverse = dict((value, key) for key, value in enums.items())
     enums['reverseMapping'] = reverse
     return type('Enum', (object,) , enums)
 
