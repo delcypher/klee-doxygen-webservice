@@ -54,7 +54,10 @@ def isGitRepo(path):
 
 def updateNeeded(commitHash):
     currentCommitHash = subprocess.check_output(['git','rev-parse','HEAD'], cwd=repoDest)
-    currentCommitHash = str(currentCommitHash)
+    currentCommitHash = str(currentCommitHash).splitlines()[0] # Only grab first line
+    currentCommitHash = currentCommitHash.replace(' ','') # Remove any spaces
+    assert len(currentCommitHash) == len(commitHash)
+
     logging.debug('Current commit hash is "{0}"'.format(currentCommitHash))
     logging.debug('Comparing to hash {0}'.format(commitHash))
     if commitHash != currentCommitHash:
