@@ -34,6 +34,8 @@ def handlePostReceive():
             else:
                 logging.info('No need to regenerate docs')
 
+            logging.info('Done')
+
             responceString = gen_doxygen.returnCode.reverseMapping[result]
             logging.info('Result of generating docs:' + responceString)
         except Exception as e:
