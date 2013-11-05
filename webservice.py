@@ -5,6 +5,7 @@ import logging
 import pprint
 import json
 import gen_doxygen
+import traceback
 
 app = Flask(__name__)
 
@@ -36,8 +37,8 @@ def handlePostReceive():
             responceString = gen_doxygen.returnCode.reverseMapping[result]
             logging.info('Result of generating docs:' + responceString)
         except Exception as e:
-            responceString = 'Exception occured:' + str(e)
-            logging.error('Exception occured:' + str(e))
+            responceString = 'Exception occured:' + traceback.format_exc()
+            logging.error(responceString)
     else:
         logging.debug('No payload')
 
